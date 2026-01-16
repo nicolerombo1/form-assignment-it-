@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>User Skills Form</title>
+
+  <style>
+    body {
+      margin: 0;
+      background-color: pink;
+      display: grid;
+      place-items: center;
+      font-family: Georgia, 'Times New Roman', Times, serif;
+    }
+
+    .container {
+      background-color: white;
+      padding: 20px;
+      width: 320px;
+      border-radius: 10px;
+      display: grid;
+      gap: 12px;
+    }
+
+    h2 {
+      text-align: center;
+      margin: 0;
+    }
+
+    label {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    input[type="text"],
+    input[type="number"] {
+      width: 100%;
+      padding: 6px;
+    }
+
+    button {
+      padding: 10px;
+      background-color: pink;
+      color: white;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+
+    .result {
+      font-weight: bold;
+      text-align: center;
+    }
+  </style>
+</head>
+<body>
+
+  <form class="container" id="userForm">
+    <h2>User Info</h2>
+
+    <label for="name">Name</label>
+    <input type="text" id="name" required>
+
+    <label for="age">Age</label>
+    <input type="number" id="age" required>
+
+    <strong>Programming Languages</strong>
+
+    <label><input type="checkbox" value="Python"> Python</label>
+    <label><input type="checkbox" value="JavaScript"> JavaScript</label>
+    <label><input type="checkbox" value="C"> C</label>
+    <label><input type="checkbox" value="C++"> C++</label>
+    <label><input type="checkbox" value="C#"> C#</label>
+
+    <button type="submit">Submit</button>
+
+    <div class="result" id="result"></div>
+  </form>
+
+  <script>
+    document.getElementById("userForm").addEventListener("submit", function (e) {
+      e.preventDefault();
+
+      var name = document.getElementById("name").value;
+      var age = document.getElementById("age").value;
+
+      var checkboxes = document.querySelectorAll('input[type="checkbox"]:checked');
+      var languages = [];
+
+      for (var i = 0; i < checkboxes.length; i++) {
+        languages.push(checkboxes[i].value);
+      }
+
+      var languageText = "cannot code yet";
+
+      if (languages.length === 1) {
+        languageText = "can code in " + languages[0];
+      } 
+      else if (languages.length > 1) {
+        languageText = "can code in ";
+
+        for (var j = 0; j < languages.length; j++) {
+          if (j === languages.length - 1) {
+            languageText += "and " + languages[j];
+          } else {
+            languageText += languages[j] + ", ";
+          }
+        }
+      }
+
+      document.getElementById("result").textContent =
+        "My name is " + name +
+        ", I am " + age +
+        " years old and I " + languageText + ".";
+    });
+  </script>
+
+</body>
+</html>
+

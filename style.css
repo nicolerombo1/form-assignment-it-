@@ -1,0 +1,42 @@
+/* Apply box-sizing to all elements */
+* {
+    box-sizing: border-box;
+}
+
+/* Body style */
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: blueviolet;
+}
+
+/* Header style */
+header {
+    background-color: darkslateblue;
+    color: white;
+    padding: 30px 0;
+    text-align: center;
+}
+
+/* Navigation menu */
+nav ul {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+    background-color: darkslateblue;
+    display: flex; /* Makes menu horizontal */
+}
+
+/* Navigation links */
+nav ul li a {
+    display: block;
+    color: white;
+    padding: 14px 20px;
+    text-decoration: none;
+}
+
+/* Hover effect */
+nav ul li a:hover {
+    background-color: rgba(255, 255, 255, 0.2);
+}
